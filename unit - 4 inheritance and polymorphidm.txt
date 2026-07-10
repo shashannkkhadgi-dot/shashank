@@ -1,0 +1,351 @@
+unit - 4 
+                Inheritance and polymorphism 
+
+
+1 ) Single inheritance 
+
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking");
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();
+        d.bark();
+    }
+}
+2) multi- inheritance
+ interface Father {
+    void fatherProperty();
+}
+
+interface Mother {
+    void motherProperty();
+}
+
+class Child implements Father, Mother {
+
+    public void fatherProperty() {
+        System.out.println("Child inherits father's property");
+    }
+
+    public void motherProperty() {
+        System.out.println("Child inherits mother's property");
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Child c = new Child();
+
+        c.fatherProperty();
+        c.motherProperty();
+    }
+}
+ 3) multile inheritance
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking");
+    }
+}
+
+class Puppy extends Dog {
+    void weep() {
+        System.out.println("Puppy is weeping");
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Puppy p = new Puppy();
+        p.eat();
+        p.bark();
+        p.weep();
+    }
+} 
+4) Hierachile inheritance 
+class Teacher {
+    void teach() {
+        System.out.println("Teaching");
+    }
+}
+
+class Student extends Teacher {
+    void listen() {
+        System.out.println("Listening");
+    }
+}
+
+class Principal extends Teacher {
+    void evaluate() {
+        System.out.println("Evaluating");
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Student s = new Student();
+        Principal p = new Principal();
+
+        s.teach();
+        s.listen();
+
+        p.teach();
+        p.evaluate();
+    }
+}
+
+   Use of "super " keyword 
+1 The super keyword in java is a reference varibale that is used to refer parent class objects. 
+the main use to used of super keyword in java is to access the base class data member or method 
+from their child in inheritance . 
+class Superclass {
+    int num = 100;
+}
+
+class Subclass extends Superclass {
+    int num = 200;
+
+    void display() {
+        System.out.println(super.num); // Superclass variable
+        System.out.println(num);       // Subclass variable
+    }
+
+    public static void main(String[] args) {
+        Subclass obj = new Subclass();
+        obj.display();
+    }
+}
+
+
+2 ) The super can be used to invoke parent class method 
+class Person {
+    void message() {
+        System.out.println("This is Person");
+    }
+}
+
+class Student extends Person {
+    @Override
+    void message() {
+        System.out.println("This is Student");
+    }
+
+    public static void main(String[] args) {
+        Student obj = new Student();
+        obj.message();
+    }
+}
+3 ) use of super keyword tp invoke constructor of parent class 
+
+class Parentclass {
+
+    // Default constructor
+    Parentclass() {
+        System.out.println("Constructor of Parent class");
+    }
+}
+
+class Subclass extends Parentclass {
+
+    // Default constructor
+    Subclass() {
+        System.out.println("Constructor of Subclass");
+    }
+
+    public static void main(String[] args) {
+        Subclass obj = new Subclass();
+    }
+}
+example 2 - Let's see the real use of super keyword , Here Employee class inherits person class so all
+the peroperties of Person will be inherited to Employee by default . to intialize all the property , we
+are  using parent class constructor from child  , in such way we are reusing the parent class constructor 
+
+class Person {
+    int id;
+    String name;
+
+    Person(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+class Employee extends Person {
+    float salary;
+
+    Employee(int id, String name, float salary) {
+        super(id, name);   // Calls Person constructor
+        this.salary = salary;
+    }
+
+    void display() {
+        System.out.println(id + " " + name + " " + salary);
+    }
+
+    public static void main(String[] args) {
+        Employee obj = new Employee(101, "Ram", 50000);
+        obj.display();
+    }
+}
+
+method overriding 
+
+The process of redefining the onheritedd method od the super class in the derived class in callled 
+method overriding 
+
+class A {
+    int i, j;
+
+    A(int x, int y) {
+        i = x;
+        j = y;
+    }
+
+    void display() {
+        System.out.println("i and j: " + i + " " + j);
+    }
+}
+
+class B extends A {
+    int k;
+
+    B(int x, int y, int z) {
+        super(x, y);
+        k = z;
+    }
+
+    void display() {
+        super.display();
+        System.out.println("k: " + k);
+    }
+
+    public static void main(String[] args) {
+        B obj = new B(10, 20, 30);
+        obj.display();
+    }
+}
+
+
+Runtime polymorphism or Dynamic method dispatch 
+eg - Program in java showing the dynamic polymorphism 
+class College {
+
+    public void display() {
+        System.out.println("New Summit College");
+    }
+}
+
+class Student extends College {
+
+    @Override
+    public void display() {
+        System.out.println("There are 700 students in NSC");
+    }
+}
+
+public class DispatchDemo {
+
+    public static void main(String[] args) {
+        College obj;          // Parent class reference
+        obj = new Student();  // Child class object
+
+        obj.display();        // Calls Student's display() method
+    }
+}
+abstract calss 
+
+abstract class Animal {
+
+    // Abstract method
+    abstract void sound();
+
+    // Normal method
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+
+    // Implementing abstract method
+    void sound() {
+        System.out.println("Dog barks");
+    }
+
+    public static void main(String[] args) {
+        Dog obj = new Dog();
+        obj.sound();
+        obj.eat();
+    }
+}
+Interface in java 
+Interface is look like class but is it not a class or we say as interface in java is a blueprint of a class
+also as interface is a refernce type in java . 
+interface A {
+    void display();
+}
+
+class B implements A {
+
+    public void display() {
+        System.out.println("Derived class B");
+    }
+}
+
+class C implements A {
+
+    public void display() {
+        System.out.println("Derived class C");
+    }
+}
+
+public class InterfaceDemo {
+
+    public static void main(String[] args) {
+        A d = new C();   // Interface reference
+        d.display();
+    }
+}
+
+Multiple inheitance supported in java by using interface 
+interface A {
+    void methodA();
+}
+
+interface B {
+    void methodB();
+}
+
+class C implements A, B {
+
+    public void methodA() {
+        System.out.println("Within class C of method A");
+    }
+
+    public void methodB() {
+        System.out.println("Within class C of method B");
+    }
+
+    public static void main(String[] args) {
+        C obj = new C();
+
+        obj.methodA();
+        obj.methodB();
+    }
+}

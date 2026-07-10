@@ -1,0 +1,333 @@
+   Unit - 2  
+               Basic of java Programming
+    Question of unit --2
+
+
+34 ) Write a program to create a 2D array (matrix) and 
+* calculate sum of each row and column 
+* Find transpose of the matrix
+* Check whether the matrix i symmetric
+
+import java.util.Scanner;
+
+public class MatrixOperations {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of rows: ");
+        int r = sc.nextInt();
+
+        System.out.print("Enter number of columns: ");
+        int c = sc.nextInt();
+
+        int[][] matrix = new int[r][c];
+
+        System.out.println("Enter matrix elements:");
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Sum of rows
+        System.out.println("\nSum of each row:");
+        for (int i = 0; i < r; i++) {
+            int sum = 0;
+            for (int j = 0; j < c; j++) {
+                sum += matrix[i][j];
+            }
+            System.out.println("Row " + (i + 1) + " = " + sum);
+        }
+
+        // Sum of columns
+        System.out.println("\nSum of each column:");
+        for (int j = 0; j < c; j++) {
+            int sum = 0;
+            for (int i = 0; i < r; i++) {
+                sum += matrix[i][j];
+            }
+            System.out.println("Column " + (j + 1) + " = " + sum);
+        }
+
+        // Transpose
+        System.out.println("\nTranspose Matrix:");
+        for (int i = 0; i < c; i++) {
+            for (int j = 0; j < r; j++) {
+                System.out.print(matrix[j][i] + " ");
+            }
+            System.out.println();
+        }
+
+        // Symmetric Check
+        boolean symmetric = true;
+
+        if (r != c) {
+            symmetric = false;
+        } else {
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+                    if (matrix[i][j] != matrix[j][i]) {
+                        symmetric = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (symmetric)
+            System.out.println("\nMatrix is Symmetric.");
+        else
+            System.out.println("\nMatrix is Not Symmetric.");
+    }
+}
+
+
+35 ) WAP to accept N number using command line argument and 
+* Store them in an array 
+* Sort them in accending order 
+* Display the second largest number
+import java.util.Arrays;
+
+public class NumberArray {
+    public static void main(String[] args) {
+
+        int n = args.length;
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(args[i]);
+        }
+
+        Arrays.sort(arr);
+
+        System.out.println("Sorted Array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+
+        System.out.println("\nSecond Largest Number: " + arr[n - 2]);
+    }
+}
+
+36 ) WAP to simulate a bacic calculation using switch statement this performs
+        Addtion
+        Subtraction
+        Multiplicaton
+        Division
+        Modulus
+               Include validation for division by zero
+
+ addtion        
+class Addition {
+
+    public int sum(int x, int y) {
+        return (x + y);
+    }
+
+    public int sum(int x, int y, int z) {
+        return (x + y + z);
+    }
+
+    public double sum(double x, double y) {
+        return (x + y);
+    }
+
+    public static void main(String args[]) {
+
+        Addition a = new Addition();
+
+        System.out.println(a.sum(10, 20));
+        System.out.println(a.sum(10, 20, 30));
+        System.out.println(a.sum(10.5, 20.5));
+    }
+}
+
+import java.util.Scanner;
+
+public class MatrixOperations {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of rows: ");
+        int r = sc.nextInt();
+
+        System.out.print("Enter number of columns: ");
+        int c = sc.nextInt();
+
+        int[][] matrix = new int[r][c];
+
+        System.out.println("Enter matrix elements:");
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Sum of rows
+        System.out.println("\nSum of each row:");
+        for (int i = 0; i < r; i++) {
+            int sum = 0;
+            for (int j = 0; j < c; j++) {
+                sum += matrix[i][j];
+            }
+            System.out.println("Row " + (i + 1) + " = " + sum);
+        }
+
+        // Sum of columns
+        System.out.println("\nSum of each column:");
+        for (int j = 0; j < c; j++) {
+            int sum = 0;
+            for (int i = 0; i < r; i++) {
+                sum += matrix[i][j];
+            }
+            System.out.println("Column " + (j + 1) + " = " + sum);
+        }
+
+        // Transpose
+        System.out.println("\nTranspose Matrix:");
+        for (int i = 0; i < c; i++) {
+            for (int j = 0; j < r; j++) {
+                System.out.print(matrix[j][i] + " ");
+            }
+            System.out.println();
+        }
+
+        // Symmetric Check
+        boolean symmetric = true;
+
+        if (r != c) {
+            symmetric = false;
+        } else {
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+                    if (matrix[i][j] != matrix[j][i]) {
+                        symmetric = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (symmetric)
+            System.out.println("\nMatrix is Symmetric.");
+        else
+            System.out.println("\nMatrix is Not Symmetric.");
+    }
+}
+import java.util.Arrays;
+
+public class NumberArray {
+    public static void main(String[] args) {
+
+        int n = args.length;
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(args[i]);
+        }
+
+        Arrays.sort(arr);
+
+        System.out.println("Sorted Array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+
+        System.out.println("\nSecond Largest Number: " + arr[n - 2]);
+    }
+}
+
+
+37 ) WAP a program that accpte a number and prints 
+It s mulitiplication table
+sum of the table value 
+use nested loop 
+import java.util.Arrays;
+public class NumberArray {
+    public static void main(String[] args) {
+
+        int n = args.length;
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(args[i]);
+        }
+
+        Arrays.sort(arr);
+
+        System.out.println("Sorted Array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+
+        System.out.println("\nSecond Largest Number: " + arr[n - 2]);
+    }
+}
+
+import java.util.Scanner;
+
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+
+        int sum = 0;
+
+        System.out.println("Multiplication Table:");
+        for (int i = 1; i <= 10; i++) {
+            int value = num * i;
+            System.out.println(num + " x " + i + " = " + value);
+            sum += value;
+        }
+
+        System.out.println("Sum of table values = " + sum);
+    }
+}
+38. Electricity Bill Using Slab-wise Calculation
+import java.util.Scanner;
+
+public class ElectricityBill {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter units consumed: ");
+        int units = sc.nextInt();
+
+        double bill;
+
+        if (units <= 100)
+            bill = units * 5;
+        else if (units <= 200)
+            bill = (100 * 5) + ((units - 100) * 7);
+        else
+            bill = (100 * 5) + (100 * 7) + ((units - 200) * 10);
+
+        System.out.println("Electricity Bill = Rs. " + bill);
+    }
+}
+39. Pattern and Total Numbers Printed
+Output:
+1
+12
+123
+1234
+12345
+Program:
+public class NumberPattern {
+    public static void main(String[] args) {
+
+        int count = 0;
+
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j);
+                count++;
+            }
+            System.out.println();
+        }
+
+        System.out.println("Total numbers printed = " + count);
+    }
+}
