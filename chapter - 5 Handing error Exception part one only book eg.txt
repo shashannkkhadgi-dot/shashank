@@ -1,0 +1,9 @@
+pubilc  class Returntype {
+public static int sum (int a , int b ){
+System,out.print("hi");
+return a+b ;
+}
+public static void main (String []args){
+Sum(5,8); 
+}
+}

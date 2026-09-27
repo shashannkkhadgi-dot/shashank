@@ -1,0 +1,206 @@
+   Unit - 8 
+                    Advanced OOP Concepts in java 
+
+1 ) Singleton pattern 
+ 
+
+public class Main {
+    public static void main(String[] args) {
+
+        Singleton s1 = Singleton.getInstance();
+        Singleton s2 = Singleton.getInstance();
+
+        s1.showMessage();
+
+        System.out.println(s1 == s2);
+    }
+}
+
+
+
+2 ) factory pattern 
+// Step 1: Interface
+interface Shape {
+    void draw();
+}
+
+// Step 2: Implementations
+class Circle implements Shape {
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+class Rectangle implements Shape {
+    public void draw() {
+        System.out.println("Drawing Rectangle");
+    }
+}
+
+// Step 3: Factory class
+class ShapeFactory {
+
+    public Shape getShape(String type) {
+
+        if (type == null)
+            return null;
+
+        if (type.equalsIgnoreCase("CIRCLE")) {
+            return new Circle();
+
+        } else if (type.equalsIgnoreCase("RECTANGLE")) {
+            return new Rectangle();
+        }
+
+        return null;
+    }
+}
+
+// Step 4: Main class
+public class Main {
+
+    public static void main(String[] args) {
+
+        ShapeFactory factory = new ShapeFactory();
+
+        Shape s1 = factory.getShape("CIRCLE");
+        s1.draw();
+
+        Shape s2 = factory.getShape("RECTANGLE");
+        s2.draw();
+    }
+}
+
+3 ) Observer patter 
+
+import java.util.*;
+
+class Subject {
+
+    private List<Observer> observers = new ArrayList<>();
+    private int state;
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+        notifyAllObservers();
+    }
+
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void notifyAllObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
+}
+
+Stream API 
+
+The stream API in java introduced in java * provides a powerful way to process collection of data 
+using function style operation like filering mapping reducing and sorting . It allows devlopers 
+ to build developers to build pipelines of operation like that are both experssive and efficient 
+without modifying  the original data .
+
+
+Example 
+
+import java.util.*;
+import java.util.stream.*;
+
+public class StreamExample {
+
+    public static void main(String[] args) {
+
+        List<String> names = Arrays.asList(
+            "Ram", "Shyam", "Hari", "Ram"
+        );
+
+        // Stream pipeline: filter, map, distinct, sorted, collect
+        List<String> result = names.stream()
+                .filter(name -> name.length() > 3)
+                .map(String::toUpperCase)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println(result);
+    }
+}
+
+Option class 
+The  Optional class in java ( introduced in java 8 ) is a container object used to represent value 
+that may or may not be present , helping developers avoid NullPoint Exception by handing null 
+values more gracefully .
+import java.util.Optional;
+
+public class OptionalDemo {
+
+    public static void main(String[] args) {
+
+        String[] words = new String[5];
+        words[3] = "Java";
+
+        Optional<String> checkNull =
+                Optional.ofNullable(words[3]);
+
+        checkNull.ifPresent(word ->
+                System.out.println(word.toLowerCase()));
+
+        String result = checkNull.orElse("No word found");
+
+        System.out.println(result);
+    }
+}
+
+                      Method Refrences 
+
+ Method references are a  shorthand introduced in java 8 to make lambda expressions cleanner and 
+more readable . They use scope resolution operator Operator to directly refer to existing . 
+
+import java.util.*;
+import java.util.function.Supplier;
+
+class MathUtil {
+
+    static void square(int n) {
+        System.out.println(n * n);
+    }
+}
+
+public class MethodRefDemo {
+
+    public static void main(String[] args) {
+
+        List<Integer> numbers = Arrays.asList(2, 3, 4);
+
+        // Static method reference
+        numbers.forEach(MathUtil::square);
+
+        // Instance method reference
+        Printer printer = new Printer();
+
+        List<String> words = Arrays.asList("Java", "Spring", "Boot");
+
+        words.forEach(printer::print);
+
+        // Constructor reference
+        Supplier<List<String>> listSupplier = ArrayList::new;
+
+        List<String> newList = listSupplier.get();
+    }
+}
+
+class Printer {
+
+    void print(String msg) {
+        System.out.println(msg);
+    }
+}
+
+.........................................................................................................................................................................................................................................................................................

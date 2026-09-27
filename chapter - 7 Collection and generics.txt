@@ -1,0 +1,602 @@
+Unit - 7 
+          Collection and generics 
+Wrapper class and associate method 
+
+Autoboxing and unboxing 
+ 
+  Complete example 
+
+public class IntegerExample {
+
+    public static void main(String[] args) {
+
+        // 1. Conversion: String to Primitive
+        String ageStr = "25";
+        int age = Integer.parseInt(ageStr);
+
+        System.out.println("String to Integer: " + age);
+
+
+        // 2. Conversion: Primitive to String
+        String ageBack = Integer.toString(age);
+
+        System.out.println("Integer to String: " + ageBack);
+
+
+        // 3. Constant Values
+        System.out.println("Max Integer: " + Integer.MAX_VALUE);
+        System.out.println("Min Integer: " + Integer.MIN_VALUE);
+
+
+        // 4. Base Conversion
+        System.out.println("Binary of 10: " + Integer.toBinaryString(10));
+        System.out.println("Hex of 255: " + Integer.toHexString(255));
+
+
+        // 5. Comparison
+        Integer a = 10;
+        Integer b = 20;
+
+        System.out.println("Comparison: " + Integer.compare(a, b));
+    }
+}
+
+
+# Java program to demonstrate working of map interface 
+
+import java.util.*;
+
+class HashMapDemo {
+
+    public static void main(String args[]) {
+
+        Map<String, Integer> hm = new HashMap<String, Integer>();
+
+        hm.put("a", 100);
+        hm.put("b", 200);
+        hm.put("c", 300);
+        hm.put("d", 400);
+
+        Set<Map.Entry<String, Integer>> st = hm.entrySet();
+
+        for (Map.Entry<String, Integer> me : st) {
+            System.out.print(me.getKey() + " ");
+            System.out.println(me.getValue());
+        }
+    }
+}
+
+# In this example we have demonstrated almost all the important methods of HashMap class
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
+import java.util.Set;
+
+public class HashMapDemo {
+
+    public static void main(String args[]) {
+
+        HashMap<Integer, String> hmap = new HashMap<Integer, String>();
+
+        // Adding elements to HashMap
+        hmap.put(12, "Bishnu");
+        hmap.put(2, "Santosh");
+        hmap.put(7, "Prakash");
+        hmap.put(49, "Bhupi");
+        hmap.put(3, "Mahendra");
+
+        // Displaying key and value using Iterator
+        Set<Map.Entry<Integer, String>> set = hmap.entrySet();
+
+        Iterator<Map.Entry<Integer, String>> iterator = set.iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, String> mentry = iterator.next();
+
+            System.out.print("Key is: " + mentry.getKey());
+            System.out.println(" & Value is: " + mentry.getValue());
+        }
+
+        // Getting value using key
+        String var = hmap.get(2);
+
+        System.out.println("Value at key 2: " + var);
+
+        // Removing an element
+        hmap.remove(3);
+
+        System.out.println("Map key and values after removal:");
+
+        Set<Map.Entry<Integer, String>> set2 = hmap.entrySet();
+
+        Iterator<Map.Entry<Integer, String>> iterator2 = set2.iterator();
+
+        while (iterator2.hasNext()) {
+
+            Map.Entry<Integer, String> mentry2 = iterator2.next();
+
+            System.out.print("Key is: " + mentry2.getKey());
+            System.out.println(" & Value is: " + mentry2.getValue());
+        }
+    }
+}
+
+# Java program to demonstrate positional access 
+
+import java.util.*;
+
+public class ArrayListDemo {
+
+    public static void main(String[] args) {
+
+        List<Integer> l1 = new ArrayList<Integer>();
+
+        l1.add(0, 1); // Adds 1 at index 0
+        l1.add(1, 2); // Adds 2 at index 1
+
+        System.out.println(l1); // [1, 2]
+
+        List<Integer> l2 = new ArrayList<Integer>();
+
+        l2.add(1);
+        l2.add(2);
+        l2.add(3);
+
+        l1.addAll(1, l2);
+
+        System.out.println(l1); // [1, 1, 2, 3, 2]
+
+        l1.remove(1);
+
+        System.out.println(l1); // [1, 2, 3, 2]
+
+        System.out.println(l1.get(3)); // 2
+
+        l1.set(0, 5);
+
+        System.out.println(l1); // [5, 2, 3, 2]
+    }
+}
+
+
+# Java program to demonstrate search
+
+import java.util.*;
+
+public class ListDemo {
+
+    public static void main(String[] args) {
+
+        List<String> l = new ArrayList<String>(5);
+
+        l.add("Apple");
+        l.add("Banana");
+        l.add("Apple");
+
+        System.out.println("First index of Apple: " + l.indexOf("Apple"));
+
+        System.out.println("Last index of Apple: " + l.lastIndexOf("Apple"));
+
+        System.out.println("Index of element not present: " + l.indexOf("Orange"));
+    }
+}
+
+
+#  Java program to demonstrate Listiterator
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class ListIteratorDemo {
+
+    public static void main(String[] args) {
+
+        ArrayList<Integer> al = new ArrayList<Integer>();
+
+        // Adding numbers from 0 to 9
+        for (int i = 0; i < 10; i++) {
+            al.add(i);
+        }
+
+        System.out.println(al);
+
+        // Creating ListIterator
+        ListIterator<Integer> itr = al.listIterator();
+
+        while (itr.hasNext()) {
+
+            int i = itr.next();
+
+            System.out.print(i + " ");
+
+            if (i % 2 == 0) {
+
+                i++;          // Change even number to odd
+                itr.set(i);   // Change current value
+                itr.add(i);   // Add the new value
+            }
+        }
+
+        System.out.println();
+
+        System.out.println(al);
+    }
+}
+
+
+#  Java program to demonstrate Listiterator
+
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class ListIteratorDemo {
+
+    public static void main(String[] args) {
+
+        ArrayList<Integer> al = new ArrayList<Integer>();
+
+        // Adding numbers from 0 to 9
+        for (int i = 0; i < 10; i++) {
+            al.add(i);
+        }
+
+        System.out.println(al);
+
+        // Creating ListIterator
+        ListIterator<Integer> itr = al.listIterator();
+
+        while (itr.hasNext()) {
+
+            int i = itr.next();
+
+            System.out.print(i + " ");
+
+            if (i % 2 == 0) {
+
+                i++;          // Change even number to odd
+                itr.set(i);   // Change current value
+                itr.add(i);   // Add the new value
+            }
+        }
+
+        System.out.println();
+
+        System.out.println(al);
+    }
+}
+
+
+#  Example:Java program to demonstrate working of ArrayList in Java
+
+
+import java.io.*;
+import java.util.*;
+
+class ArrayListDemo {
+
+    public static void main(String args[]) throws IOException {
+
+        int n = 5;
+
+        ArrayList<Integer> arrli = new ArrayList<Integer>(n);
+
+        // Adding elements
+        for (int i = 1; i <= n; i++) {
+            arrli.add(i);
+        }
+
+        // Display ArrayList
+        System.out.println(arrli);
+
+        // Removing element at index 3
+        arrli.remove(3);
+
+        // Display ArrayList after removal
+        System.out.println(arrli);
+
+        // Display elements using get()
+        for (int i = 0; i < arrli.size(); i++) {
+            System.out.print(arrli.get(i) + " ");
+        }
+    }
+}
+
+  
+# Java code for Linked List implementation
+import java.util.*;
+
+public class Test {
+
+    public static void main(String args[]) {
+
+        LinkedList<String> object = new LinkedList<String>();
+
+        // Adding elements
+        object.add("A");
+        object.add("B");
+        object.addLast("C");
+        object.addFirst("D");
+        object.add(2, "E");
+        object.add("F");
+        object.add("G");
+
+        System.out.println("Linked list: " + object);
+
+        // Removing elements
+        object.remove("B");
+        object.remove(3);
+        object.removeFirst();
+        object.removeLast();
+
+        System.out.println("Linked list after deletion: " + object);
+
+        // Checking whether E exists
+        boolean status = object.contains("E");
+
+        if (status)
+            System.out.println("List contains the element 'E'");
+        else
+            System.out.println("List doesn't contain the element 'E'");
+
+        // Size of LinkedList
+        int size = object.size();
+
+        System.out.println("Size of linked list = " + size);
+
+        // Getting element
+        Object element = object.get(2);
+
+        System.out.println("Element returned by get(): " + element);
+
+        // Changing element
+        object.set(2, "Y");
+
+        System.out.println("Linked list after change: " + object);
+    }
+}
+
+#  Java program to demonstrate working of HashSet
+
+import java.util.*;
+
+class Test {
+
+    public static void main(String[] args) {
+
+        HashSet<String> h = new HashSet<String>();
+
+        // Adding elements
+        h.add("India");
+        h.add("Australia");
+        h.add("South Africa");
+
+        // Adding duplicate element
+        h.add("India");
+
+        System.out.println(h);
+
+        // Checking whether India exists
+        System.out.println("List contains India or not: "
+                + h.contains("India"));
+
+        // Removing Australia
+        h.remove("Australia");
+
+        System.out.println("List after removing Australia: " + h);
+
+        // Iterating over HashSet
+        System.out.println("Iterating over list:");
+
+        Iterator<String> i = h.iterator();
+
+        while (i.hasNext()) {
+            System.out.println(i.next());
+        }
+    }
+}
+
+
+# The treeset will be sorted based on the natural ordering of the elements 
+
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+public class CreateTreeSetExample {
+
+    public static void main(String[] args) {
+
+        SortedSet<String> fruits = new TreeSet<>();
+
+        fruits.add("Banana");
+        fruits.add("Apple");
+        fruits.add("Pineapple");
+        fruits.add("Orange");
+
+        System.out.println("Fruits Set: " + fruits);
+
+        // Adding duplicate element
+        fruits.add("Apple");
+
+        System.out.println(
+            "After adding duplicate element \"Apple\": " + fruits
+        );
+
+        // Adding lowercase banana
+        fruits.add("banana");
+
+        System.out.println(
+            "After adding \"banana\": " + fruits
+        );
+    }
+}
+
+
+
+# The Iterator Interface 
+import java.util.*;
+
+public class IteratorDemo {
+
+    public static void main(String[] args) {
+
+        List<String> names = new ArrayList<>(
+            Arrays.asList("Apple", "Banana", "Mango", "Orange")
+        );
+
+        // Get the iterator
+        Iterator<String> it = names.iterator();
+
+        while (it.hasNext()) {
+
+            String name = it.next();
+
+            if (name.equals("Banana")) {
+                it.remove(); // Safely removes "Banana"
+            } else {
+                System.out.println(name);
+            }
+        }
+
+        System.out.println("List after removal: " + names);
+    }
+}
+
+
+# The comparator Interface 
+
+import java.util.*;
+
+class Employee {
+
+    String name;
+    int salary;
+
+    Employee(String name, int salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+}
+
+class SalaryComparator implements Comparator<Employee> {
+
+    public int compare(Employee e1, Employee e2) {
+        return e1.salary - e2.salary;
+    }
+}
+
+public class ComparatorDemo {
+
+    public static void main(String[] args) {
+
+        List<Employee> list = new ArrayList<>();
+
+        list.add(new Employee("John", 5000));
+        list.add(new Employee("Alice", 7000));
+
+        // Sort using our custom Comparator
+        Collections.sort(list, new SalaryComparator());
+
+        for (Employee e : list) {
+            System.out.println(e.name + " : " + e.salary);
+        }
+    }
+}
+
+# Defining Generic Class And Methods 
+
+
+class Box<T> {
+
+    private T content;
+
+    public void setContent(T content) {
+        this.content = content;
+    }
+
+    public T getContent() {
+        return content;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        // Create a Box for Integers
+        Box<Integer> intBox = new Box<>();
+        intBox.setContent(100);
+
+        // Create a Box for Strings
+        Box<String> strBox = new Box<>();
+        strBox.setContent("Hello Generics");
+
+        // Display values
+        System.out.println("Integer Value: " + intBox.getContent());
+        System.out.println("String Value: " + strBox.getContent());
+    }
+}
+
+ 1) 1. Unbounded Wildcard
+
+import java.util.*;
+
+public class Main {
+
+    public static void printList(List<?> list) {
+
+        for (Object item : list) {
+            System.out.println(item);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        List<Integer>
+
+
+2. Upper Bounded Wildcard
+
+import java.util.*;
+
+public class Main {
+
+    public static void printNumbers(List<? extends Number> list) {
+
+        for (Number n : list) {
+            System.out.println(n);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        List<Integer> numbers = Arrays.asList(10, 20, 30);
+
+        printNumbers(numbers);
+    }
+}
+
+. Lower Bounded Wildcard
+
+import java.util.*;
+
+public class Main {
+
+    public static void addNumbers(List<? super Integer> list) {
+
+        list.add(10);
+        list.add(20);
+        list.add(30);
+
+        System.out.println(list);
+    }
+
+    public static void main(String[] args) {
+
+        List<Number> numbers = new ArrayList<>();
+
+        addNumbers(numbers);
+    }
+}
+
